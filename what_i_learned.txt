@@ -1,3 +1,5 @@
 You can connect signals to themselves whilst also being connected to another node. This is good for the Single Responsibility design principle as scripts are
 only doing one thing.
+    E.g. You can have a text field signal upwards that the text has been entered whilst also signaling to yourself that you want to clear the text field.
 
+    
