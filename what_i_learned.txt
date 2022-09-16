@@ -1,5 +1,6 @@
 You can connect signals to themselves whilst also being connected to another node. This is good for the Single Responsibility design principle as scripts are
 only doing one thing.
-    E.g. You can have a text field signal upwards that the text has been entered whilst also signaling to yourself that you want to clear the text field.
+    - E.g. You can have a text field signal upwards that the text has been entered whilst also signaling to yourself that you want to clear the text field.
 
-    
+When you need to get refferences to child nodes via variables (onready var = $...) ask yourself how many times you need to use that variable, if you don't need
+to use them that often not create the variables and instead use a function to change the child nodes.
