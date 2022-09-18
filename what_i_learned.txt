@@ -17,5 +17,7 @@ PoolStringArray array built for strings and very memory efficent
     ]).join("\n")
     - var exit_string = PoolStringArray(new_room.exits.keys()).join(" ")
 
-
+Tool scripts: to create a tool script add "tool" to they very start of the script. This means that this script will run in the editor, which means if you have
+lifecycle scripts like func _ready() or func _physics_process() it will on the editor, therefore, you only want to use tool when you have functions that are not
+called on that script so it's logic rather than code flow.
 
