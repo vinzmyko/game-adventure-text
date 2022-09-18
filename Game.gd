@@ -1,8 +1,8 @@
 extends Control
 
 
-const InputResponse = preload("res://InputResponse.tscn")
-const Response = preload("res://Response.tscn")
+const InputResponse = preload("res://input/InputResponse.tscn")
+const Response = preload("res://input/Response.tscn")
 
 
 export (int) var max_lines_remembered := 30

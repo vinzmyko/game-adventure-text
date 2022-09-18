@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Exit",
 "language": "GDScript",
-"path": "res://Exit.gd"
+"path": "res://rooms/Exit.gd"
 }, {
 "base": "PanelContainer",
 "class": "Roomz",
 "language": "GDScript",
-"path": "res://Room.gd"
+"path": "res://rooms/Room.gd"
 } ]
 _global_script_class_icons={
 "Exit": "",
