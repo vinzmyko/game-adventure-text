@@ -77,6 +77,12 @@ func _connect_exit(direction: String, room, is_locked: bool = false):
 			room.exits["south"] = exit
 		"south":
 			room.exits["north"] = exit
+		"inside":
+			room.exits["outside"] = exit
+		"outside":
+			room.exits["inside"] = exit
+		"smallroom":
+			room.exits["north"] = exit
 		_:
 			printerr("Tried to connect to an invalid directions %s", direction)
 
