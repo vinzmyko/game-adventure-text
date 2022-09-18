@@ -8,7 +8,8 @@ to use them that often not create the variables and instead use a function to ch
 Formatted strings are pretty broken, useful for when trying to return text with certain words that only variables carry.
     - E.g "Stats: Health: %i Race %s" [health, race]
 
-Initialise function when you want a child node to do something in this case initialisation, this is part of the Single Responsibility design principle
+Initialise function when you want a child node to do something in this case initialisation, this is part of the Single Responsibility design principle, so
+children nodes don't need to signal up a lot of times.
 
 PoolStringArray array built for strings and very memory efficent
     - var List = PoolStringArray([
@@ -20,4 +21,8 @@ PoolStringArray array built for strings and very memory efficent
 Tool scripts: to create a tool script add "tool" to they very start of the script. This means that this script will run in the editor, which means if you have
 lifecycle scripts like func _ready() or func _physics_process() it will on the editor, therefore, you only want to use tool when you have functions that are not
 called on that script so it's logic rather than code flow.
+
+If you are creating a script that you will not put intothe scene tree don't make it extend from Node, if it's a resource you can make it extend from Resource.
+
+
 
