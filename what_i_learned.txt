@@ -15,3 +15,7 @@ PoolStringArray array built for strings and very memory efficent
         "You are now in: " + new_room.room_name + ". It is " + new_room.room_description,
 		"Exits: "
     ]).join("\n")
+    - var exit_string = PoolStringArray(new_room.exits.keys()).join(" ")
+
+
+
