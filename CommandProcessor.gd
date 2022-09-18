@@ -1,13 +1,11 @@
 extends Node
 
 
-signal response_generated(response_text)
-
 var current_room = null
 
 
-func initialise(starting_room):
-	change_room(starting_room)
+func initialise(starting_room) -> String:
+	return change_room(starting_room)
 
 
 func process_command(input: String) -> String:
@@ -31,17 +29,23 @@ func go(second_word: String) -> String:
 	if second_word == " ":
 		return "Go where?"
 	
-	return "You go %s" % second_word
+	if current_room.exits.keys().has(second_word):
+		var change_response = change_room(current_room.exits[second_word])
+		return PoolStringArray(["You go %s." % second_word, change_response]).join("\n")
+	else:
+		return "This room has no exits in that direction"
 
 
 func help() -> String:
 	return "Commands: go[location]"
 
 
-func change_room(new_room: Roomz):
+func change_room(new_room: Roomz) -> String:
 	current_room = new_room
+	var exit_string = PoolStringArray(new_room.exits.keys()).join(" ")
 	var strings = PoolStringArray([
 		"You are now in: " + new_room.room_name + ". It is " + new_room.room_description,
-		"Exits: "
+		"Exits: " + exit_string
 	]).join("\n")
-	emit_signal("response_generated", strings)
+	
+	return strings
