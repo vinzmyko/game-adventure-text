@@ -51,6 +51,14 @@ margin_bottom = -200.0
 room_name = "outside"
 room_description = "outside the house"
 
+[node name="ShedRoom" parent="RoomManager" instance=ExtResource( 5 )]
+margin_left = 350.0
+margin_top = -630.0
+margin_right = 614.0
+margin_bottom = -430.0
+room_name = "Shed"
+room_description = "A rustic seemly abandoned shed."
+
 [node name="Background" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0

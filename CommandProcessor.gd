@@ -27,6 +27,8 @@ func process_command(input: String) -> String:
 			return drop(second_word)
 		"inventory":
 			return inventory()
+		"use":
+			return use(second_word)
 		"help":
 			return help()
 		_:
@@ -39,6 +41,8 @@ func go(second_word: String) -> String:
 	
 	if current_room.exits.keys().has(second_word):
 		var exit = current_room.exits[second_word]
+		if exit.is_other_room_locked(current_room):
+			return "That exit is currently locked!"
 		var change_response = change_room(exit.get_other_room(current_room))
 		return PoolStringArray(["You go %s." % second_word, change_response]).join("\n")
 	else:
@@ -74,8 +78,28 @@ func inventory() -> String:
 	return player.get_inventory_list()
 
 
+func use(second_word: String) -> String:
+	if second_word == " ":
+		return "Drop what?"
+	
+	for item in player.inventory:
+		if second_word.to_lower() == item.item_name.to_lower():
+			match item.item_type:
+				Types.ItemTypes.KEY:
+					for exit in current_room.exits.values():
+						if exit.room_2 == item.use_value:
+							exit.room_2_is_locked = false
+							player.drop_item(item)
+							return "You use %s to unlock the %s door." % [item.item_name, exit.room_2.room_name]
+					return "That item does not unlock any doors in this room."
+				_:
+					return "Error - tried to use an item with an invalid type."
+	
+	return "You don't have that item."
+
+
 func help() -> String:
-	return "Commands: go[location], take[item], drop[item], inventory"
+	return "Commands: go[location], take[item], drop[item], inventory, use[item]"
 
 
 func change_room(new_room) -> String:
