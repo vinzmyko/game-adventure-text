@@ -7,3 +7,11 @@ to use them that often not create the variables and instead use a function to ch
 
 Formatted strings are pretty broken, useful for when trying to return text with certain words that only variables carry.
     - E.g "Stats: Health: %i Race %s" [health, race]
+
+Initialise function when you want a child node to do something in this case initialisation, this is part of the Single Responsibility design principle
+
+PoolStringArray array built for strings and very memory efficent
+    - var List = PoolStringArray([
+        "You are now in: " + new_room.room_name + ". It is " + new_room.room_description,
+		"Exits: "
+    ]).join("\n")
