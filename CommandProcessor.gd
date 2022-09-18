@@ -43,10 +43,4 @@ func help() -> String:
 
 func change_room(new_room) -> String:
 	current_room = new_room
-	var exit_string = PoolStringArray(new_room.exits.keys()).join(" ")
-	var strings = PoolStringArray([
-		"You are now in: " + new_room.room_name + ". It is " + new_room.room_description,
-		"Exits: " + exit_string
-	]).join("\n")
-	
-	return strings
+	return new_room.get_full_description()
