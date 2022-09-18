@@ -4,3 +4,6 @@ only doing one thing.
 
 When you need to get refferences to child nodes via variables (onready var = $...) ask yourself how many times you need to use that variable, if you don't need
 to use them that often not create the variables and instead use a function to change the child nodes.
+
+Formatted strings are pretty broken, useful for when trying to return text with certain words that only variables carry.
+    - E.g "Stats: Health: %i Race %s" [health, race]
