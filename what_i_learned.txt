@@ -24,5 +24,8 @@ called on that script so it's logic rather than code flow.
 
 If you are creating a script that you will not put intothe scene tree don't make it extend from Node, if it's a resource you can make it extend from Resource.
 
-
+Optional parameters in functions, you just need to set the parameter a default value and then when you call the function just put the name of the variable so
+it just gets passed.
+    - func connect_exit_locked(direction: String, room, room_2_override = "null"):
+        _connect_exit(direction, room, true, room_2_override)
 

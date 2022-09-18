@@ -3,10 +3,8 @@ class_name Exit
 
 
 var room_1 = null
-var room_1_is_locked: bool = false
 
 var room_2 = null
-var room_2_is_locked: bool = false
 
 
 func is_other_room_locked(current_room):

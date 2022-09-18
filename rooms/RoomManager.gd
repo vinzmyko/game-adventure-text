@@ -16,8 +16,10 @@ func _ready() -> void:
 	key.use_value = $GateRoom
 	$BedRoom.add_item(key)
 	
-	$TrainingRoom.connect_exit_unlocked("south", $BedRoom)
+	$TrainingRoom.connect_exit_unlocked("room", $BedRoom, "start")
 	$BedRoom.connect_exit_locked("east", $GateRoom)
+	$GateRoom.connect_exit_unlocked("woods", $Woods, "entrance")
+	$GateRoom.connect_exit_unlocked("mountains", $Mountains, "entrance")
 
 
 
