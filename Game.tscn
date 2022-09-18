@@ -37,7 +37,7 @@ margin_top = -400.0
 margin_right = 314.0
 margin_bottom = -200.0
 room_name = "a house"
-room_description = "a random house that you do not recognise."
+room_description = "a house that you do not recognise."
 
 [node name="OutsideRoom" parent="RoomManager" instance=ExtResource( 5 )]
 margin_left = 350.0
@@ -45,7 +45,7 @@ margin_top = -400.0
 margin_right = 614.0
 margin_bottom = -200.0
 room_name = "outside"
-room_description = "a random house that you do not recognise."
+room_description = "outside the house"
 
 [node name="Background" type="PanelContainer" parent="."]
 anchor_right = 1.0

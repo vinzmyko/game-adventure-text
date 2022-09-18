@@ -30,7 +30,8 @@ func go(second_word: String) -> String:
 		return "Go where?"
 	
 	if current_room.exits.keys().has(second_word):
-		var change_response = change_room(current_room.exits[second_word])
+		var exit = current_room.exits[second_word]
+		var change_response = change_room(exit.get_other_room(current_room))
 		return PoolStringArray(["You go %s." % second_word, change_response]).join("\n")
 	else:
 		return "This room has no exits in that direction"
@@ -40,7 +41,7 @@ func help() -> String:
 	return "Commands: go[location]"
 
 
-func change_room(new_room: Roomz) -> String:
+func change_room(new_room) -> String:
 	current_room = new_room
 	var exit_string = PoolStringArray(new_room.exits.keys()).join(" ")
 	var strings = PoolStringArray([
