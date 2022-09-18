@@ -13,10 +13,11 @@ func _ready() -> void:
 	# Murim game
 	var key = Item.new()
 	key.initalise("key", Types.ItemTypes.KEY)
-	key.use_value = $GateRoom
+	
+	$TrainingRoom.connect_exit_locked("room", $BedRoom, "start")
 	$BedRoom.add_item(key)
 	
-	$TrainingRoom.connect_exit_unlocked("room", $BedRoom, "start")
+	
 	$BedRoom.connect_exit_locked("east", $GateRoom)
 	$GateRoom.connect_exit_unlocked("woods", $Woods, "entrance")
 	$GateRoom.connect_exit_unlocked("mountains", $Mountains, "entrance")
