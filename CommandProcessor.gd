@@ -1,6 +1,15 @@
 extends Node
 
 
+signal response_generated(response_text)
+
+var current_room = null
+
+
+func initialise(starting_room):
+	change_room(starting_room)
+
+
 func process_command(input: String) -> String:
 	var words = input.split(" ", false)
 	if words.size() == 0:
@@ -27,3 +36,12 @@ func go(second_word: String) -> String:
 
 func help() -> String:
 	return "Commands: go[location]"
+
+
+func change_room(new_room: Roomz):
+	current_room = new_room
+	var strings = PoolStringArray([
+		"You are now in: " + new_room.room_name + ". It is " + new_room.room_description,
+		"Exits: "
+	]).join("\n")
+	emit_signal("response_generated", strings)
