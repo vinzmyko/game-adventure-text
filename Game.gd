@@ -16,6 +16,7 @@ onready var history_rows : VBoxContainer = $Background/MarginContainer/Rows/Game
 onready var scroll := $Background/MarginContainer/Rows/GameInfo/Scroll
 onready var scrollbar = scroll.get_v_scrollbar()
 onready var room_manager = $RoomManager
+onready var player = $Player
 
 
 func _ready() -> void:
@@ -24,7 +25,7 @@ func _ready() -> void:
 	
 	create_response("Welcome to a text adventure game. You can type 'help' to a all the availiable commands")
 	
-	var starting_room_response = command_processor.initialise(room_manager.get_child(0))
+	var starting_room_response = command_processor.initialise(room_manager.get_child(0), player)
 	create_response(starting_room_response)
 
 
