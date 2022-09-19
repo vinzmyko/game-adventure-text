@@ -40,4 +40,4 @@ Duck typing in Godot use the "in" keyword to check if this property exists, so i
 
 When debugging you can hover onready variable on the script and it will tell you if it's null or not
 
-        
+BBCode is from RichTextLabel which basically let's you use CSS on words to colour them etc. You need to enable this in the inspect to get it working.  
