@@ -38,5 +38,6 @@ Can a variable is this value but if another value is this value the original var
 Duck typing in Godot use the "in" keyword to check if this property exists, so it will tell us if it's a class without doing a check on it's data type
     - E.g. if "is_locked" in reward:
 
+When debugging you can hover onready variable on the script and it will tell you if it's null or not
 
         
