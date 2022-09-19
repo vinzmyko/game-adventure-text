@@ -6,7 +6,7 @@ When you need to get refferences to child nodes via variables (onready var = $..
 to use them that often not create the variables and instead use a function to change the child nodes.
 
 Formatted strings are pretty broken, useful for when trying to return text with certain words that only variables carry.
-    - E.g "Stats: Health: %i Race %s" [health, race]
+    - E.g. "Stats: Health: %i Race %s" [health, race]
 
 Initialise function when you want a child node to do something in this case initialisation, this is part of the Single Responsibility design principle, so
 children nodes don't need to signal up a lot of times.
@@ -28,4 +28,15 @@ Optional parameters in functions, you just need to set the parameter a default v
 it just gets passed.
     - func connect_exit_locked(direction: String, room, room_2_override = "null"):
         _connect_exit(direction, room, true, room_2_override)
+
+If you want quotation marks placed inside quotation marks use \"
+    E.g. return npc.npc_name + ": \"" + npc.initial_dialogue + "\""
+
+Can a variable is this value but if another value is this value the original variable changes, use of one like if else statement
+    - E.g. var dialogue = npc.post_quest_dialogue if npc.has_quest_item_received else npc.initial_dialogue
+
+Duck typing in Godot use the "in" keyword to check if this property exists, so it will tell us if it's a class without doing a check on it's data type
+    - E.g. if "is_locked" in reward:
+
+
         
