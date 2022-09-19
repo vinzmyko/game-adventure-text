@@ -13,12 +13,14 @@ func _ready() -> void:
 	# Murim game
 	var key = load("res://items/Key.tres")
 	key.use_value = $BedRoom
+	var cake = load("res://items/Cake.tres")
 	var spirit = load("res://npcs/spirit.tres")
 	var guard = load("res://npcs/guard.tres")
 	
 	$TrainingRoom.add_npc(spirit)
 	$TrainingRoom.connect_exit_unlocked("room", $BedRoom, "start")
 	$BedRoom.add_item(key)
+	$BedRoom.add_item(cake)
 	
 	$BedRoom.connect_exit_unlocked("east", $GateRoom)
 	$GateRoom.add_npc(guard)

@@ -31,6 +31,8 @@ func process_command(input: String) -> String:
 			return use(second_word)
 		"talk":
 			return talk(second_word)
+		"give":
+			return give(second_word)
 		"help":
 			return help()
 		_:
@@ -106,13 +108,36 @@ func talk(second_word: String) -> String:
 	
 	for npc in current_room.npcs:
 		if npc.npc_name.to_lower() == second_word:
-			return npc.npc_name + ": \"" + npc.initial_dialogue + "\""
+			var dialogue = npc.post_quest_dialogue if npc.has_quest_item_received else npc.initial_dialogue
+			return npc.npc_name + ": \"" + dialogue + "\""
 	
 	return "That person doesn't now exist"
 
 
+func give(second_word: String) -> String:
+	if second_word == " ":
+		return "Give what?"
+	
+	var has_item = false
+	for item in player.inventory:
+		if second_word.to_lower() == item.item_name.to_lower():
+			has_item = true
+	
+	if !has_item:
+		return "You don't have that item."
+	
+	for npc in current_room.npcs:
+		if npc.quest_item != null and second_word.to_lower() == npc.quest_item.item_name.to_lower():
+			npc.has_quest_item_received = true
+			player.drop_item(second_word)
+			return "You give the %s to the %s\n" % [second_word, npc.npc_name]
+	
+	return "Item cannot be given"
+
+
+
 func help() -> String:
-	return "Commands: go[location], take[item], drop[item], inventory, use[item]"
+	return "Commands: go[location], take[item], drop[item], inventory, use[item], talk[npc], give[item]"
 
 
 func change_room(new_room) -> String:

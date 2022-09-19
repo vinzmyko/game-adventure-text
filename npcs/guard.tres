@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://npcs/NPC.gd" type="Script" id=1]
+[ext_resource path="res://items/Cake.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -8,3 +9,4 @@ npc_name = "guard"
 initial_dialogue = "Greetings stranger!
 ??? Now go away"
 post_quest_dialogue = "Thanks for the cake my man"
+quest_item = ExtResource( 2 )
