@@ -10,5 +10,5 @@ func set_text(response: String, input: String = ""):
 	else:
 		input_history_label.text = " > " + input
 	
-	response_label.text = response
+	response_label.bbcode_text = response
 

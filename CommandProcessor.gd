@@ -36,17 +36,17 @@ func process_command(input: String) -> String:
 		"help":
 			return help()
 		_:
-			return "Unrecognised command - please try again"
+			return Types.wrap_text("Unrecognised command - please try again", Types.COLOUR_SYSTEM)
 
 
 func go(second_word: String) -> String:
 	if second_word == " ":
-		return "Go where?"
+		return Types.wrap_text("Go where?", Types.COLOUR_SYSTEM)
 	
 	if current_room.exits.keys().has(second_word):
 		var exit = current_room.exits[second_word]
 		if exit.is_locked:
-			return "The way %s is currently locked!" % second_word
+			return "The way " + Types.wrap_text(second_word, Types.COLOUR_LOCATION) + " is currently " + Types.wrap_text("locked", Types.COLOUR_SYSTEM)
 		var change_response = change_room(exit.get_other_room(current_room))
 		return PoolStringArray(["You go %s." % second_word, change_response]).join("\n")
 	else:
@@ -55,7 +55,7 @@ func go(second_word: String) -> String:
 
 func take(second_word: String) -> String:
 	if second_word == " ":
-		return "Take what?"
+		return Types.wrap_text("Take what?", Types.COLOUR_SYSTEM)
 	
 	for item in current_room.items:
 		if second_word.to_lower() == item.item_name.to_lower():
@@ -68,7 +68,7 @@ func take(second_word: String) -> String:
 
 func drop(second_word: String) -> String:
 	if second_word == " ":
-		return "Drop what?"
+		return Types.wrap_text("Drop what?", Types.COLOUR_SYSTEM)
 	
 	for item in player.inventory:
 		if second_word.to_lower() == item.item_name.to_lower():
@@ -84,7 +84,7 @@ func inventory() -> String:
 
 func use(second_word: String) -> String:
 	if second_word == " ":
-		return "Drop what?"
+		return Types.wrap_text("Use what?", Types.COLOUR_SYSTEM)
 	
 	for item in player.inventory:
 		if second_word.to_lower() == item.item_name.to_lower():
@@ -104,7 +104,7 @@ func use(second_word: String) -> String:
 
 func talk(second_word: String) -> String:
 	if second_word == " ":
-		return "Talk to who?"
+		return Types.wrap_text("Talk to who?", Types.COLOUR_SYSTEM)
 	
 	for npc in current_room.npcs:
 		if npc.npc_name.to_lower() == second_word:
@@ -116,7 +116,7 @@ func talk(second_word: String) -> String:
 
 func give(second_word: String) -> String:
 	if second_word == " ":
-		return "Give what?"
+		return Types.wrap_text("Give what?", Types.COLOUR_SYSTEM)
 	
 	var has_item = false
 	for item in player.inventory:

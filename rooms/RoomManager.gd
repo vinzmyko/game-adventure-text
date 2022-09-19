@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	$BedRoom.connect_exit_unlocked("east", $GateRoom)
 	$GateRoom.add_npc(guard)
-	$GateRoom.connect_exit_unlocked("woods", $Woods, "entrance")
+	$GateRoom.connect_exit_locked("woods", $Woods, "entrance")
 	$GateRoom.connect_exit_unlocked("mountains", $Mountains, "entrance")
 
 

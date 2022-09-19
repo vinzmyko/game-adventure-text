@@ -8,7 +8,7 @@ onready var player = $Player
 
 
 func _ready() -> void:
-	game_info.create_response("Welcome to a text adventure game. You can type 'help' to a all the availiable commands")
+	game_info.create_response(Types.wrap_text("Welcome to a text adventure game. You can type 'help' to a all the availiable commands", Types.COLOUR_SYSTEM))
 	
 	var starting_room_response = command_processor.initialise(room_manager.get_child(0), player)
 	game_info.create_response(starting_room_response)
